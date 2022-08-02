@@ -1,4 +1,4 @@
-const { plus, minus } = require("../src/index");
+const { plus, minus, multiply } = require("../src/index");
 
 describe("addition", () => {
   test("adds positive numbers", () => {
@@ -45,5 +45,30 @@ describe("subtraction", () => {
     expect(minus(-3, 3)).toBe(-6);
     expect(minus(130, -25, 0, -5, -70, 50)).toBe(180);
     expect(minus(2, 0)).toBe(2);
+  });
+});
+
+describe("multiplication", () => {
+  test("multiplies positive numbers", () => {
+    expect(multiply(2, 8)).toBe(16);
+    expect(multiply(1, 80)).toBe(80);
+    expect(multiply(2.5, 123.45)).toBe(308.625);
+    expect(multiply(2, 5, 3.45, 17)).toBe(586.5);
+  });
+
+  test("multiplies negative numbers", () => {
+    expect(multiply(-2, -8)).toBe(16);
+    expect(multiply(-1, -80)).toBe(80);
+    expect(multiply(-2.5, -123.45)).toBe(308.625);
+  });
+
+  test("multiplies various numbers", () => {
+    expect(multiply(-2, 8)).toBe(-16);
+    expect(multiply(-1, 80)).toBe(-80);
+    expect(multiply(-2.5, 123.45)).toBe(-308.625);
+    expect(multiply(0, 45)).toBe(0);
+    expect(multiply(0, 1)).toBe(0);
+    expect(multiply(-1, -0)).toBe(0);
+    expect(multiply(3, 147, -678, 23.6)).toBeCloseTo(-7056352.8);
   });
 });
